@@ -3,12 +3,12 @@ const router = express.Router();
 const Person = require('./../models/Person');
 
 router.post('/', async(req , res)=>{
-    
+    console.log("booo");
     try{
         const data = req.body // assuming that request body contain person data
 
         // // create a new person document using mongoose model
-         const newPerson = new Person( data);
+         const newPerson = new Person(data);
          // save the new person to dtabase
          const response = await newPerson.save();
          console.log('data saved');
@@ -28,7 +28,7 @@ router.get('/',  async(req , res)=>
 {
 
     try{
-        const data = await  Person.find();
+        const data = await Person.find();
         console.log('data fetched');
         res.status(200).json(data);
     }

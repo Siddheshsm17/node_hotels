@@ -14,7 +14,9 @@
 // console.log(typeof(jsonStringified)); // op-> string 
 
 const express = require('express')
-const app = express()
+const app = express();
+require('dotenv').config();
+
  
 //const Menu = require('./models/Menu'); 
 
@@ -23,13 +25,15 @@ const db = require ('./db');
 const bodyParser = require('body-parser');
 app.use(bodyParser.json()); // req.body
 
+
+
 app.get('/',function(req,res){
     res.send('welcome to my hotel.....how can i help you ? , we have menu list')
 })
 
-// Post ROUTE to add person
-
-
+app.get('/', function (req, res) {
+    res.send('Welcome to our Hotel');
+})
 
 
 
@@ -53,7 +57,7 @@ const MenuRoute = require("./Routes/MenuRoute");
 // use router--> menu
 app.use('/Menu', MenuRoute);
 
-
+const PORT = process.env.PORT || 4000;
 
 app.listen(3000 , () =>{
     console.log('listening on port 3000'); 
